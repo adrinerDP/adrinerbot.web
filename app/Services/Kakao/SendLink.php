@@ -12,12 +12,12 @@ class SendLink
 
     /**
      * SendLink constructor.
-     * @param Authentication $continue
      */
-    public function __construct($continue)
+    public function __construct()
     {
-        $this->payload = $continue->payload;
-        $this->cookies = $continue->cookies;
+        $authentication = new Authentication();
+        $this->payload = $authentication->payload;
+        $this->cookies = $authentication->cookies;
         $this->client = new Client([
             'headers' => [
                 'User-Agent' => config('kakao.client.user-agent')
